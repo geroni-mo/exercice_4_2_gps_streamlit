@@ -11,13 +11,13 @@ with col1:
 
 # Ouverture du fichier et récupération des tags Exif
 chemin = "montre_gps.jpg"
-fichier = open(chemin, 'rb')
+fichier = open(chemin, "rb")
 tags = exifread.process_file(fichier)
 # Boucle For pour placer les données dans le formulaire Streamlit
 with col2:
     with st.form("my_form"):
         st.write("#### Formulaire Méta EXIF")
         for clé, valeur in tags.items():
-            if clé not in ('JPEGThumbnail', 'TIFFThumbnail', 'Filename', 'EXIF MakerNote'):
+            if clé not in ("JPEGThumbnail", "TIFFThumbnail", "Filename", "EXIF MakerNote"):
                 tags[clé] = st.text_input(clé, valeur)
-        submit_button = st.form_submit_button(label='Submit')
+        submit_button = st.form_submit_button(label="Submit")
